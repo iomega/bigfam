@@ -7,9 +7,12 @@ name = "pypi"
 biopython = "*"
 ipython = "*"
 helperlibs = "*"
-pyldavis = "*"
 jupyter = "*"
 gensim = "*"
+pyldavis = {git = "https://github.com/bmabey/pyLDAvis.git"}
+numpy = "*"
+scipy = "*"
+pandas = "*"
 
 [dev-packages]
 

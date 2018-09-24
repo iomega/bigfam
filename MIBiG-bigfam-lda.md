@@ -22,3 +22,13 @@ jupyter notebook
 ```
 
 Open and run lda.opynb notebook.
+
+
+
+
+pyLDAviz prepare causes kernel restart
+Trying different versions
+```
+pipenv install numpy==1.11.3 scipy==0.18.1 pandas==0.17.0
+pipenv install git+https://github.com/bmabey/pyLDAvis.git#egg=pyLDAvis
+```
