@@ -74,7 +74,7 @@ def load_gbks(path):
     if os.path.isfile(path):
         filenames = [path]
     else:
-        filenames = glob(os.path.join(path,"**/*.gbk"), recursive=True)
+        filenames = glob(os.path.join(path,"**/*cluster*.gbk"), recursive=True)
 
     for filename in filenames:
         records = []
@@ -84,15 +84,12 @@ def load_gbks(path):
                 print("Info: file {} contains more than 1 record".format(filename))
         except:
             print("Error: file {} is not a correct gbk file.".format(filename))
-            continue
-            # sys.exit(1)
+            sys.exit(1)
         for record in records:
             clusters = fetch_clusters(record)
             results.append({
                 "filename": filename.split("/")[-1],
-                "clusters": [{
-                    "genes": clusters
-                }]
+                "clusters": clusters
             })
 
     return results
@@ -129,8 +126,6 @@ def fetch_clusters(record):
                     cds["info"][qualifier] = feature.qualifiers[qualifier][0]
             cds_list.append(cds)
     
-    return cds_list
-
     if len(clusters) > 1:
         print("Info: record {} contains more than 1 cluster".format(record.id))
 
